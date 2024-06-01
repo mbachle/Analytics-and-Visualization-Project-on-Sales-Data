@@ -1,0 +1,71 @@
+## This is Assignment 5 of CGS3126 by Mason Bachle
+print("Assignment 5")
+
+print("Task 1 of printing done")
+print("\n")
+
+## Task 2
+print("Task 2")
+
+print("Throughout this assignment, I will leearn how to write functions.")
+print("I will also learn how to call a function.")
+print("I will also learn to use conditional logical using 'if' statements.")
+print("I will also learn how to read data from a data file and perform some processing of that data and write the result of processing data to an output file.")
+print("\n")
+
+##Task 3
+print("Task 3")
+
+def BMI(height, weight):
+    return (weight / (height ** 2)) * 703
+
+##Task 4
+print("Task 4")
+
+userHeight = float(input("Enter your height in inches: "))
+userWeight = float(input("Enter your weight in pounds: "))
+
+userBMI = BMI(userHeight, userWeight)
+print("Your BMI is", userBMI)
+print("\n")
+
+##Task 5
+print("Task 5")
+
+def TheBMIVerdict(theBMIValue):
+    if theBMIValue >= 30:
+        return "Your BMI suggests that you are obese."
+    elif theBMIValue >= 25:
+        return "Your BMI suggests that you are overweight, but not quite obese."
+    elif theBMIValue >= 18.5:
+        return "Your BMI suggests that your weight is in the normal range. You are neither overweight not underweight."
+    else:
+        return "Your BMI suggets your weight is below normal for your height."
+
+##Task 6
+print("Task 6")
+
+print(TheBMIVerdict(userBMI))
+print("\n")
+
+##Task 7
+import csv
+output_file = open("CGS3126Assign5ByBachleMason.txt", 'w')
+
+with open("HeightWeightDataAssign5.csv", 'r') as input_file:
+    data = csv.reader(input_file)
+    output_file.write("Height, Weight, ,BMI, BMI Verdict\n")
+    for row in data:
+        height, weight = map(float, row)
+        bmi = BMI(height, weight)
+        verdict = TheBMIVerdict(bmi)
+        output_file.write(f"{height}, {weight}, {bmi}, {verdict}\n")
+
+output_file.close()
+
+print("Task 7 completed. Output written to CGS3126Assign5ByMasonBachle.txt")
+
+    
+    
+    
+
